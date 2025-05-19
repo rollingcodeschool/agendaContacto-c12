@@ -53,11 +53,7 @@
     <main class="container my-4">
       <div class="d-flex justify-content-between">
         <h1>Lista de contactos</h1>
-        <button
-          class="btn btn-primary"
-          data-bs-target="#crearContacto"
-          data-bs-toggle="modal"
-        >
+        <button class="btn btn-primary" id="btnAgregarContacto">
           <i class="bi bi-plus-circle"></i> Agregar
         </button>
       </div>
@@ -127,6 +123,7 @@
         </table>
       </section>
     </main>
+    <!-- Modal crear Contacto -->
     <div
       class="modal fade"
       id="crearContacto"
@@ -148,7 +145,30 @@
             ></button>
           </div>
           <div class="modal-body">
-            <p>aqui agregar formulario</p>
+            <form>
+              <div class="mb-3">
+                <label for="nombre" class="form-label"
+                  >Nombre</label
+                >
+                <input
+                  type="nombre"
+                  class="form-control"
+                  id="nombre"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="apellido" class="form-label"
+                  >Apellido</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="apellido"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
           </div>
         </div>
       </div>
