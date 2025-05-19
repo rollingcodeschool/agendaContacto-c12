@@ -53,7 +53,11 @@
     <main class="container my-4">
       <div class="d-flex justify-content-between">
         <h1>Lista de contactos</h1>
-        <button class="btn btn-primary">
+        <button
+          class="btn btn-primary"
+          data-bs-target="#crearContacto"
+          data-bs-toggle="modal"
+        >
           <i class="bi bi-plus-circle"></i> Agregar
         </button>
       </div>
@@ -78,8 +82,12 @@
               <td>3812223334</td>
               <td>otto@mail.com</td>
               <td>
-                <button class="btn btn-warning"><i class="bi bi-pen"></i></button>
-                <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                <button class="btn btn-warning">
+                  <i class="bi bi-pen"></i>
+                </button>
+                <button class="btn btn-danger">
+                  <i class="bi bi-trash"></i>
+                </button>
                 <button class="btn btn-info"><i class="bi bi-eye"></i></button>
               </td>
             </tr>
@@ -90,8 +98,12 @@
               <td>3812223334</td>
               <td>otto@mail.com</td>
               <td>
-                <button class="btn btn-warning"><i class="bi bi-pen"></i></button>
-                <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                <button class="btn btn-warning">
+                  <i class="bi bi-pen"></i>
+                </button>
+                <button class="btn btn-danger">
+                  <i class="bi bi-trash"></i>
+                </button>
                 <button class="btn btn-info"><i class="bi bi-eye"></i></button>
               </td>
             </tr>
@@ -102,8 +114,12 @@
               <td>3812223334</td>
               <td>otto@mail.com</td>
               <td>
-                <button class="btn btn-warning"><i class="bi bi-pen"></i></button>
-                <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                <button class="btn btn-warning">
+                  <i class="bi bi-pen"></i>
+                </button>
+                <button class="btn btn-danger">
+                  <i class="bi bi-trash"></i>
+                </button>
                 <button class="btn btn-info"><i class="bi bi-eye"></i></button>
               </td>
             </tr>
@@ -111,6 +127,32 @@
         </table>
       </section>
     </main>
+    <div
+      class="modal fade"
+      id="crearContacto"
+      tabindex="-1"
+      aria-labelledby="modalCrearContacto"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title fs-5" id="modalCrearContacto">
+              Agregar contactos
+            </h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>aqui agregar formulario</p>
+          </div>
+        </div>
+      </div>
+    </div>
     <footer class="bg-dark text-center py-4">
       <p>&copy; Todos los derechos reservados</p>
     </footer>
