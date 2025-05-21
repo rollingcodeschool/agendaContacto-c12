@@ -17,6 +17,16 @@ function crearContacto() {
   //almacenar el objeto en la agenda
   agenda.push(nuevoContacto)
   console.log(agenda);
+  guardarEnLocalstorage();
+  limpiarFormulario();
+}
+
+function limpiarFormulario(){
+    formularioCrearContacto.reset()
+}
+
+function guardarEnLocalstorage(){
+    localStorage.setItem('agendaKey', JSON.stringify(agenda))
 }
 
 
