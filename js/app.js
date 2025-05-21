@@ -29,11 +29,11 @@ function guardarEnLocalstorage(){
     localStorage.setItem('agendaKey', JSON.stringify(agenda))
 }
 
-
 //declaro variables
 const btnAgregarContacto = document.getElementById("btnAgregarContacto");
 const formularioCrearContacto = document.querySelector("form");
-const agenda = [];
+const agenda = JSON.parse(localStorage.getItem('agendaKey')) || [];
+console.log(agenda)
 const inputNombre = document.querySelector('#nombre');
 const inputApellido = document.querySelector('#apellido');
 const inputEmail = document.querySelector('#email');
