@@ -147,25 +147,36 @@
           <div class="modal-body">
             <form>
               <div class="mb-3">
-                <label for="nombre" class="form-label"
-                  >Nombre</label
-                >
-                <input
-                  type="nombre"
-                  class="form-control"
-                  id="nombre"
-                  aria-describedby="emailHelp"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="apellido" class="form-label"
-                  >Apellido</label
-                >
+                <label for="nombre" class="form-label">Nombre</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="apellido"
+                  id="nombre"
+                  aria-describedby="Ingresar nombre"
+                  minlength="2"
+                  maxlength="50"
+                  placeholder="Ej: Juan"
                 />
+              </div>
+              <div class="mb-3">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="apellido" minlength="2" maxlength="50" placeholder="Ej: Perez"/>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Ej: juanperez@mail.com"/>
+              </div>
+              <div class="mb-3">
+                <label for="telefono" class="form-label">Telefono</label>
+                <input type="tel" class="form-control" id="telefono" placeholder="Ej: +54381222333"/>
+              </div>
+              <div class="mb-3">
+                <label for="imagen" class="form-label">Imagen</label>
+                <input type="text" class="form-control" id="imagen" placeholder="Ej: http://image"/>
+              </div>
+              <div class="mb-3">
+                <label for="notas" class="form-label">Notas</label>
+                <textarea class="form-control" id="notas" placeholder="Agrega tus notas aqui" maxlength="250"></textarea>
               </div>
               <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
