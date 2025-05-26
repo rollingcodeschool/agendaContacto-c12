@@ -15,7 +15,6 @@ export default class Contacto{
         this.#imagen = imagen;
         this.#notas = notas;
     }
-    //agregar los get y set
     // Getters
     get id() {
         return this.#id;

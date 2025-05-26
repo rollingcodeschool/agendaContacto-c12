@@ -19,6 +19,7 @@ function crearContacto() {
   console.log(agenda);
   guardarEnLocalstorage();
   limpiarFormulario();
+  // todo: mostrar un mensaje al usuario, diciendo que se creo el contacto correctamente
 }
 
 function limpiarFormulario(){
