@@ -29,10 +29,10 @@ function crearContacto() {
   dibujarFila(nuevoContacto, agenda.length);
   //agregar un mensaje para el usuario
   Swal.fire({
-  title: "Contacto creado",
-  text: `El contacto ${nuevoContacto.nombre} fue creado correctamente`,
-  icon: "success"
-});
+    title: "Contacto creado",
+    text: `El contacto ${nuevoContacto.nombre} fue creado correctamente`,
+    icon: "success",
+  });
 }
 
 function limpiarFormulario() {
@@ -47,7 +47,7 @@ function cargaDatosContacto() {
   //verificar en localstorage si hay datos para mostrar en la tabla
   if (agenda.length !== 0) {
     //dibujar cada fila de la tabla con sus respectivos datos
-    agenda.map((contacto, index) => dibujarFila(contacto, index+1));
+    agenda.map((contacto, index) => dibujarFila(contacto, index + 1));
   }
   //todo mostrar un mensaje al usuario, no hay datos para mostrar
 }
@@ -55,7 +55,7 @@ function cargaDatosContacto() {
 function dibujarFila(contacto, index) {
   console.log(contacto);
   //aqui voy a dibujar una sola fila con sus datos
-  tablaContacto.innerHTML += `  <tr>
+  tablaContacto.innerHTML += `<tr>
               <th scope="row">${index} </th>
               <td>${contacto.nombre}</td>
               <td>${contacto.apellido} </td>
@@ -65,13 +65,18 @@ function dibujarFila(contacto, index) {
                 <button class="btn btn-warning">
                   <i class="bi bi-pen"></i>
                 </button>
-                <button class="btn btn-danger">
+                <button class="btn btn-danger" onclick="eliminarContacto()">
                   <i class="bi bi-trash"></i>
                 </button>
                 <button class="btn btn-info"><i class="bi bi-eye"></i></button>
               </td>
             </tr>`;
 }
+
+window.eliminarContacto = () => {
+  console.log("aqui debo borrar un contacto");
+};
+
 
 //declaro variables
 const btnAgregarContacto = document.getElementById("btnAgregarContacto");
@@ -95,4 +100,3 @@ formularioCrearContacto.addEventListener("submit", (e) => {
 });
 
 cargaDatosContacto();
-
