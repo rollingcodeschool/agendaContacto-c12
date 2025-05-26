@@ -26,6 +26,7 @@ function crearContacto() {
   console.log(agenda);
   guardarEnLocalstorage();
   limpiarFormulario();
+  dibujarFila(nuevoContacto, agenda.length);
 }
 
 function limpiarFormulario() {
