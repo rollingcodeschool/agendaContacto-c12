@@ -27,6 +27,12 @@ function crearContacto() {
   guardarEnLocalstorage();
   limpiarFormulario();
   dibujarFila(nuevoContacto, agenda.length);
+  //agregar un mensaje para el usuario
+  Swal.fire({
+  title: "Contacto creado",
+  text: `El contacto ${nuevoContacto.nombre} fue creado correctamente`,
+  icon: "success"
+});
 }
 
 function limpiarFormulario() {
@@ -89,3 +95,4 @@ formularioCrearContacto.addEventListener("submit", (e) => {
 });
 
 cargaDatosContacto();
+
