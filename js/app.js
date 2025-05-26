@@ -53,7 +53,6 @@ function cargaDatosContacto() {
 }
 
 function dibujarFila(contacto, index) {
-  console.log(contacto);
   //aqui voy a dibujar una sola fila con sus datos
   tablaContacto.innerHTML += `<tr>
               <th scope="row">${index} </th>
@@ -65,7 +64,7 @@ function dibujarFila(contacto, index) {
                 <button class="btn btn-warning">
                   <i class="bi bi-pen"></i>
                 </button>
-                <button class="btn btn-danger" onclick="eliminarContacto()">
+                <button class="btn btn-danger" onclick="eliminarContacto('${contacto.id}')">
                   <i class="bi bi-trash"></i>
                 </button>
                 <button class="btn btn-info"><i class="bi bi-eye"></i></button>
@@ -73,8 +72,17 @@ function dibujarFila(contacto, index) {
             </tr>`;
 }
 
-window.eliminarContacto = () => {
-  console.log("aqui debo borrar un contacto");
+window.eliminarContacto = (id) => {
+  //obtener el id del contacto a borrar
+  console.log("aqui debo borrar un contacto", id);
+  //buscar en la agenda cual es el contacto que tiene tal id
+  const posicionContacto = agenda.findIndex((contacto)=> contacto.id === id)
+  console.log(posicionContacto)
+  //borrar de la agenda el contacto con id X
+  agenda.splice(posicionContacto,1)
+  //actualizar los datos del localstorage
+ guardarEnLocalstorage();
+  //actualizar la tabla de contactos
 };
 
 
