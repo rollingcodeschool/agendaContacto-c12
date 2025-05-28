@@ -5,8 +5,10 @@ function abrirModalContacto() {
   const modalCrearContacto = new bootstrap.Modal(
     document.getElementById("crearContacto")
   );
+  limpiarFormulario();
   //mostrar ventana modal
   modalCrearContacto.show();
+  creandoContacto = true;
 }
 
 function crearContacto() {
@@ -107,11 +109,41 @@ window.eliminarContacto = (id) => {
   });
 };
 
+function editarContacto() {
+  console.log("aqui tengo que modificar los datos del contacto");
+  //tomar los datos del formulario
+  console.log(idContacto);
+  //buscar en el array a donde esta el contacto que estoy editando para actualizar sus propiedades.
+  const posicionContactoActualizar = agenda.findIndex(
+    (contacto) => contacto.id === idContacto
+  );
+  agenda[posicionContactoActualizar].nombre = inputNombre.value;
+  agenda[posicionContactoActualizar].apellido = inputApellido.value;
+  agenda[posicionContactoActualizar].telefono = inputTelefono.value;
+  agenda[posicionContactoActualizar].email = inputEmail.value;
+  agenda[posicionContactoActualizar].notas = inputNotas.value;
+  agenda[posicionContactoActualizar].imagen = inputImagen.value;
+  //actualizar el localstorage
+  guardarEnLocalstorage();
+  //mostrar un mensaje al usuario indicando que se actualizo el contacto
+   Swal.fire({
+    title: "Contacto modificado",
+    text: `El contacto ${agenda[posicionContactoActualizar].nombre} fue modificado correctamente`,
+    icon: "success",
+  });
+  //todo: actualizar la tabla de contactos
+  //traer la fila de la tabla que coincide con la variable 'posicionContactoActualizar' y modificar sus datos
+}
+
 window.prepararContacto = (id) => {
   console.log("aqui tengo que preparar el contacto", id);
   //buscar la información del usuario para agregar al modal
   const contactoBuscado = agenda.find((contacto) => contacto.id === id);
   console.log(contactoBuscado);
+  //modificar el titulo de la ventana modal
+  const tituloModal = document.querySelector(".modal-title");
+  tituloModal.textContent = "Modificar Contacto";
+  abrirModalContacto();
   //cargar datos en el formulario
   inputNombre.value = contactoBuscado.nombre;
   inputApellido.value = contactoBuscado.apellido;
@@ -119,10 +151,10 @@ window.prepararContacto = (id) => {
   inputTelefono.value = contactoBuscado.telefono;
   inputImagen.value = contactoBuscado.imagen;
   inputNotas.value = contactoBuscado.notas;
-  //modificar el titulo de la ventana modal
-  const tituloModal = document.querySelector('.modal-title')
-  tituloModal.textContent = 'Modificar Contacto'
-  abrirModalContacto();
+  //cambiamos la variable para editar
+  creandoContacto = false;
+  //guardar el id del contacto que quiero modificar
+  idContacto = id;
 };
 
 //declaro variables
@@ -137,13 +169,20 @@ const inputTelefono = document.querySelector("#telefono");
 const inputNotas = document.querySelector("#notas");
 const inputImagen = document.querySelector("#imagen");
 const tablaContacto = document.getElementById("tablaContacto");
+// si creandoContacto = true voy a crear el contacto, si es false signifac que voy a editar el contacto
+let creandoContacto = true;
+let idContacto = null;
 
 //manejadores de eventos
 btnAgregarContacto.addEventListener("click", abrirModalContacto);
 formularioCrearContacto.addEventListener("submit", (e) => {
   e.preventDefault();
-  //el usuario completa el form y debo crear un objeto contacto
-  crearContacto();
+  if (creandoContacto) {
+    //el usuario completa el form y debo crear un objeto contacto
+    crearContacto();
+  } else {
+    editarContacto();
+  }
 });
 
 cargaDatosContacto();
