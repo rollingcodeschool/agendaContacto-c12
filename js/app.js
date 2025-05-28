@@ -61,7 +61,7 @@ function dibujarFila(contacto, index) {
               <td>${contacto.telefono} </td>
               <td>${contacto.email}</td>
               <td>
-                <button class="btn btn-warning">
+                <button class="btn btn-warning" onclick="prepararContacto('${contacto.id}')">
                   <i class="bi bi-pen"></i>
                 </button>
                 <button class="btn btn-danger" onclick="eliminarContacto('${contacto.id}')">
@@ -97,7 +97,7 @@ window.eliminarContacto = (id) => {
       guardarEnLocalstorage();
       //actualizar la tabla de contactos
       tablaContacto.removeChild(tablaContacto.children[posicionContacto]);
-      
+
       Swal.fire({
         title: "Contacto eliminado",
         text: "El contacto se borro exitosamente",
@@ -105,6 +105,24 @@ window.eliminarContacto = (id) => {
       });
     }
   });
+};
+
+window.prepararContacto = (id) => {
+  console.log("aqui tengo que preparar el contacto", id);
+  //buscar la información del usuario para agregar al modal
+  const contactoBuscado = agenda.find((contacto) => contacto.id === id);
+  console.log(contactoBuscado);
+  //cargar datos en el formulario
+  inputNombre.value = contactoBuscado.nombre;
+  inputApellido.value = contactoBuscado.apellido;
+  inputEmail.value = contactoBuscado.email;
+  inputTelefono.value = contactoBuscado.telefono;
+  inputImagen.value = contactoBuscado.imagen;
+  inputNotas.value = contactoBuscado.notas;
+  //modificar el titulo de la ventana modal
+  const tituloModal = document.querySelector('.modal-title')
+  tituloModal.textContent = 'Modificar Contacto'
+  abrirModalContacto();
 };
 
 //declaro variables
