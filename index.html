@@ -114,6 +114,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.min.css
                   maxlength="50"
                   placeholder="Ej: Juan"
                 />
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">El nombre debe tener entre 2 y 50 caracteres</div>
               </div>
               <div class="mb-3">
                 <label for="apellido" class="form-label">Apellido</label>
@@ -125,6 +127,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.min.css
                   maxlength="50"
                   placeholder="Ej: Perez"
                 />
+                <div class="invalid-feedback">El Apellido debe tener entre 2 y 50 caracteres</div>
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
@@ -134,6 +137,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.min.css
                   id="email"
                   placeholder="Ej: juanperez@mail.com"
                 />
+                <div class="invalid-feedback">El email debe tener el formato correcto texto@mail.dominio</div>
               </div>
               <div class="mb-3">
                 <label for="telefono" class="form-label">Telefono</label>
@@ -143,6 +147,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.min.css
                   id="telefono"
                   placeholder="Ej: +54381222333"
                 />
+                <div class="invalid-feedback">El formato del telefono debe ser 38110010000</div>
               </div>
               <div class="mb-3">
                 <label for="imagen" class="form-label">Imagen</label>
@@ -152,6 +157,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.min.css
                   id="imagen"
                   placeholder="Ej: http://image"
                 />
+                 <div class="invalid-feedback">Debes agregar el link de una imagen valida, que termine en (png, jpg, jpeg, webp)</div>
               </div>
               <div class="mb-3">
                 <label for="notas" class="form-label">Notas</label>
@@ -161,6 +167,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.min.css
                   placeholder="Agrega tus notas aqui"
                   maxlength="250"
                 ></textarea>
+                 <div class="invalid-feedback">Las notas deben contener entre 5 y 250 caracteres</div>
               </div>
               <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
@@ -182,3 +189,4 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.all.min.js
     <script src="./js/app.js" type="module"></script>
   </body>
 </html>
+

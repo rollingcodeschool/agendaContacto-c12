@@ -13,32 +13,38 @@ function abrirModalContacto() {
 
 function crearContacto() {
   //todo traer todos los datos del formulario validados
-  //crear un objeto Contacto
-  const nuevoContacto = new Contacto(
-    inputNombre.value,
-    inputApellido.value,
-    inputTelefono.value,
-    inputEmail.value,
-    inputImagen.value,
-    inputNotas.value
-  );
-  console.log(nuevoContacto);
-  //almacenar el objeto en la agenda
-  agenda.push(nuevoContacto);
-  console.log(agenda);
-  guardarEnLocalstorage();
-  limpiarFormulario();
-  dibujarFila(nuevoContacto, agenda.length);
-  //agregar un mensaje para el usuario
-  Swal.fire({
-    title: "Contacto creado",
-    text: `El contacto ${nuevoContacto.nombre} fue creado correctamente`,
-    icon: "success",
-  });
+  if (validaciones()) {
+    //crear un objeto Contacto
+    const nuevoContacto = new Contacto(
+      inputNombre.value,
+      inputApellido.value,
+      inputTelefono.value,
+      inputEmail.value,
+      inputImagen.value,
+      inputNotas.value
+    );
+    console.log(nuevoContacto);
+    //almacenar el objeto en la agenda
+    agenda.push(nuevoContacto);
+    console.log(agenda);
+    guardarEnLocalstorage();
+    limpiarFormulario();
+    dibujarFila(nuevoContacto, agenda.length);
+    //agregar un mensaje para el usuario
+    Swal.fire({
+      title: "Contacto creado",
+      text: `El contacto ${nuevoContacto.nombre} fue creado correctamente`,
+      icon: "success",
+    });
+  }
 }
 
 function limpiarFormulario() {
   formularioCrearContacto.reset();
+  const inputs = formularioCrearContacto.querySelectorAll('.form-control');
+  inputs.forEach(input => {
+    input.classList.remove('is-valid', 'is-invalid');
+  });
 }
 
 function guardarEnLocalstorage() {
@@ -126,7 +132,7 @@ function editarContacto() {
   //actualizar el localstorage
   guardarEnLocalstorage();
   //mostrar un mensaje al usuario indicando que se actualizo el contacto
-   Swal.fire({
+  Swal.fire({
     title: "Contacto modificado",
     text: `El contacto ${agenda[posicionContactoActualizar].nombre} fue modificado correctamente`,
     icon: "success",
@@ -157,11 +163,51 @@ window.prepararContacto = (id) => {
   idContacto = id;
 };
 
-window.verContacto = (id) =>{
-  console.log(id);
-  console.log(window.location)
-  window.location.href = '/pages/detalleContacto.html?id='+id
+// funciones de validacion
+function validarCantidadCaracteres(input, min, max) {
+  if (input.value.trim().length >= min && input.value.trim().length <= max) {
+    input.classList.add("is-valid");
+    input.classList.remove("is-invalid");
+    return true;
+  } else {
+    input.classList.add("is-invalid");
+     input.classList.remove("is-valid");
+    return false;
+  }
 }
+function validarEmail(input, min, max) {
+  if (input.value.trim().length >= min && input.value.trim().length <= max) {
+    input.classList.add("is-valid");
+    input.classList.remove("is-invalid");
+    return true;
+  } else {
+    input.classList.add("is-invalid");
+     input.classList.remove("is-valid");
+    return false;
+  }
+}
+
+function validaciones(){
+  let datosValidos =true;
+  if(!validarCantidadCaracteres(inputNombre, 2, 50)){
+    datosValidos= false
+  }
+  
+  if(!validarCantidadCaracteres(inputApellido,2,50)){
+    datosValidos= false
+  }
+
+  if(!validarCantidadCaracteres(inputNotas,0, 250)){
+    datosValidos= false
+  }
+
+  return datosValidos;
+}
+window.verContacto = (id) => {
+  console.log(id);
+  console.log(window.location);
+  window.location.href = "/pages/detalleContacto.html?id=" + id;
+};
 //declaro variables
 const btnAgregarContacto = document.getElementById("btnAgregarContacto");
 const formularioCrearContacto = document.querySelector("form");
