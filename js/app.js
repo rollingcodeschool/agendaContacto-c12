@@ -162,7 +162,6 @@ window.prepararContacto = (id) => {
   //guardar el id del contacto que quiero modificar
   idContacto = id;
 };
-
 // funciones de validacion
 function validarCantidadCaracteres(input, min, max) {
   if (input.value.trim().length >= min && input.value.trim().length <= max) {
@@ -175,14 +174,16 @@ function validarCantidadCaracteres(input, min, max) {
     return false;
   }
 }
-function validarEmail(input, min, max) {
-  if (input.value.trim().length >= min && input.value.trim().length <= max) {
-    input.classList.add("is-valid");
-    input.classList.remove("is-invalid");
+
+function validarEmail() {
+  const regExp= /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/
+  if (regExp.test(inputEmail.value)) {
+    inputEmail.classList.add("is-valid");
+    inputEmail.classList.remove("is-invalid");
     return true;
   } else {
-    input.classList.add("is-invalid");
-     input.classList.remove("is-valid");
+    inputEmail.classList.add("is-invalid");
+    inputEmail.classList.remove("is-valid");
     return false;
   }
 }
@@ -198,6 +199,9 @@ function validaciones(){
   }
 
   if(!validarCantidadCaracteres(inputNotas,0, 250)){
+    datosValidos= false
+  }
+  if(!validarEmail()){
     datosValidos= false
   }
 
